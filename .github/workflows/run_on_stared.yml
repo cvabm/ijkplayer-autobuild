@@ -50,6 +50,10 @@ jobs:
           echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-linux-perf"\n' >> ./module-default.sh
           echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-bzlib"\n' >> ./module-default.sh
           sed -i '82i\export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_mulaw"' module-lite.sh
+          sed -i '107i\export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=mpeg4"' module-lite.sh
+          sed -i '108\export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtp"' module-lite.sh
+          sed -i '109\export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=sdp"' module-lite.sh
+          sed -i '110\export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp"' module-lite.sh
           cat ./module-lite.sh
           rm module.sh
           ln -s module-lite.sh module.sh
