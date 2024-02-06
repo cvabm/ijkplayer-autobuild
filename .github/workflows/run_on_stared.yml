@@ -48,21 +48,22 @@ jobs:
           sed -i 's/export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-vda"/#&/' ./module-default.sh
           sed -i 's/export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-ffserver"/#&/' ./module-default.sh
           echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-linux-perf"\n' >> ./module-default.sh
-          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-bzlib"\n' >> ./module-default.sh
-          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_mulaw"\n' >> ./module-lite.sh
-          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=mpeg4"\n' >> ./module-lite.sh
-          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtp"\n' >> ./module-lite.sh
-          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=sdp"\n' >> ./module-lite.sh
-          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp"\n' >> ./module-lite.sh
-          cat ./module-lite.sh
+          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-bzlib"' >> ./module-default.sh
+          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_alaw"' >> ./module-default.sh
+          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_mulaw"' >> ./module-default.sh
+          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=mpeg4"' >> ./module-default.sh
+          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtp"' >> ./module-default.sh
+          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=sdp"' >> ./module-default.sh
+          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp"' >> ./module-default.sh
+          cat ./module-default.sh
           rm module.sh
-          ln -s module-lite.sh module.sh
+          ln -s module-default.sh module.sh
           cd ..
           cd ./android/contrib
           ./compile-openssl.sh clean
-          ./compile-openssl.sh armv7a
+          ./compile-openssl.sh all
           ./compile-ffmpeg.sh clean
-          ./compile-ffmpeg.sh armv7a
+          ./compile-ffmpeg.sh all
           cd ..
           ./compile-ijk.sh all
       - name: Clean objs
