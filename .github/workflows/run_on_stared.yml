@@ -51,13 +51,13 @@ jobs:
           echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-bzlib"\n' >> ./module-default.sh
           cat ./module-default.sh
           rm module.sh
-          ln -s module-default.sh module.sh
+          ln -s module-lite.sh module.sh
           cd ..
           cd ./android/contrib
           ./compile-openssl.sh clean
-          ./compile-openssl.sh all
+          ./compile-openssl.sh armv7a
           ./compile-ffmpeg.sh clean
-          ./compile-ffmpeg.sh all
+          ./compile-ffmpeg.sh armv7a
           cd ..
           ./compile-ijk.sh all
       - name: Clean objs
