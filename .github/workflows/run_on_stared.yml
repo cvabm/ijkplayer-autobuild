@@ -49,7 +49,8 @@ jobs:
           sed -i 's/export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-ffserver"/#&/' ./module-default.sh
           echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-linux-perf"\n' >> ./module-default.sh
           echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-bzlib"\n' >> ./module-default.sh
-          cat ./module-default.sh
+          sed -i '82i\export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_mulaw"' module-lite.sh
+          cat ./module-lite.sh
           rm module.sh
           ln -s module-lite.sh module.sh
           cd ..
