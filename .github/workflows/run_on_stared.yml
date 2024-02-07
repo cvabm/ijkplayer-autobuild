@@ -46,6 +46,9 @@ jobs:
           ./init-android-openssl.sh
           cd config
           sed -i 's/disable-gpl/enable-gpl/' ./module-default.sh
+          sed -i 's/export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-vda"/#&/' ./module-default.sh
+          sed -i 's/export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-ffserver"/#&/' ./module-default.sh
+          echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-linux-perf"\n' >> ./module-default.sh
           echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-bzlib"' >> ./module-default.sh
           echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_alaw"' >> ./module-default.sh
           echo -e 'export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --enable-decoder=pcm_ulaw"' >> ./module-default.sh
